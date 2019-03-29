@@ -26,11 +26,13 @@ minetest.override_chatcommand("msg", {
 })
 
 -- Break /tell (I'm tired of it)
-minetest.override_chatcommand("tell", {
-   description = "Old function from the mesecons mod.  Use /msg instead",
-   params = "",
-   privs = {},
-   function = function()
-      return false, "Use /msg instead"
-   end
-})
+if minetest.registered_chatcommands["tell"] then
+   minetest.override_chatcommand("tell", {
+      description = "Old function from the mesecons mod.  Use /msg instead",
+      params = "",
+      privs = {},
+      func = function()
+         return false, "Use /msg instead"
+      end
+   })
+end
