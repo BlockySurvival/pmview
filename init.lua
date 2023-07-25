@@ -33,7 +33,7 @@ minetest.override_chatcommand("msg", {
    params = old_def.params,
    privs = old_def.privs,
    func = function(name, param)
-      res, reason = old_func(name, param)
+      local res, reason = old_func(name, param)
       if res == false then
          return res, reason
       end
